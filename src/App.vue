@@ -1,22 +1,21 @@
 <template>
   <div id="app">
+      <app-mask></app-mask>
       <app-header></app-header> 
       <home></home>
-      <app-footer></app-footer>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
-import Footer from "./components/Footer.vue";
 import Home from "./components/Home.vue";
-
+import Mask from "./components/Mask.vue"
 
 export default {
   components: {
       'app-header': Header,
-      'app-footer': Footer,
-      'home': Home
+      'home': Home,
+      'app-mask': Mask
   },
   data() {
     return {};
