@@ -42,16 +42,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$logo-w-and-h: 100px;
+$logo-w-and-h: 120px;
 $logo-w-and-h-min: 50px;
 $header-l-r-pad: 8vw;
-
 .header-original {
   width: 100%;
-  height: $logo-w-and-h + 50px;
-  background: rgba(#eeeeee, 0.53);
-  box-shadow: rgba(#000, 0.2) 0px 3px 6px;
+  height: $logo-w-and-h + 30px;
+  background: rgba(#eeeeee, 0.2);
   position: fixed;
+  border-bottom: rgba(#000, 0.1) solid 1px;
   top: 0;
   z-index: 100;
   display: flex;
@@ -61,7 +60,7 @@ $header-l-r-pad: 8vw;
   #logo {
     width: $logo-w-and-h;
     height: $logo-w-and-h;
-    margin: 25px 0 25px $header-l-r-pad;
+    margin: 15px 0 15px $header-l-r-pad;
   }
 
   .tabs {
@@ -70,44 +69,9 @@ $header-l-r-pad: 8vw;
     margin-right: $header-l-r-pad;
     .tab {
       position: relative;
-      top: 40%;
+      top: 50%;
       margin: 1.5vw;
-      color: #707070;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       font-size: 25px;
-    }
-  }
-}
-
-.header-smaller {
-  width: 100%;
-  height: $logo-w-and-h-min + 10px;
-  background: rgba(#eeeeee, 0.53);
-  box-shadow: rgba(#000, 0.2) 0px 3px 6px;
-  position: fixed;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-content: center;
-  #logo {
-    width: $logo-w-and-h-min;
-    height: $logo-w-and-h-min;
-    margin: 5px 0 5px $header-l-r-pad;
-  }
-
-  .tabs {
-    list-style: none;
-    display: flex;
-    margin-right: $header-l-r-pad;
-    .tab {
-      position: relative;
-      top: 40%;
-      margin: 0 1.5vw 0 1.5vw;
-      color: #707070;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 20px;
     }
   }
 }

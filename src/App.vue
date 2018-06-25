@@ -9,13 +9,13 @@
 <script>
 import Header from "./components/Header.vue";
 import Home from "./components/Home.vue";
-import Mask from "./components/Mask.vue"
+import Mask from "./components/Mask.vue";
 
 export default {
   components: {
-      'app-header': Header,
-      'home': Home,
-      'app-mask': Mask
+    "app-header": Header,
+    home: Home,
+    "app-mask": Mask
   },
   data() {
     return {};
@@ -23,9 +23,11 @@ export default {
 };
 </script>
 
-<style lang="scss"> 
-    * {
-        margin: 0;
-        padding: 0;
-    }
+<style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #707070;
+}
 </style>

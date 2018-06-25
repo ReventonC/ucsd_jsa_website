@@ -1,5 +1,16 @@
 <template>
     <div class="home-body fullpage-container">
+        <ul class="nav-group">
+            <li class="nav-prev" @click="movePrev">
+                <img src="../assets/arrow_up.png" alt="">
+            </li>
+            <li class="nav-dots" v-bind:class="{active:index == 0}" @click="moveTo(0)"></li>
+            <li class="nav-dots" v-bind:class="{active:index == 1}" @click="moveTo(1)"></li>
+            <li class="nav-dots" v-bind:class="{active:index == 2}" @click="moveTo(2)"></li>
+            <li class="nav-next" @click="moveNext">
+                <img src="../assets/arrow_down.png" alt="">
+            </li>
+        </ul>
         <div class="fullpage-wp" v-fullpage='opts' ref='homePage'>
             <div class="page-1 page">
                 <carousel 
@@ -28,7 +39,10 @@
                 </carousel>
             </div>
             <div class="page-2 page">
-                Upcoming Events
+                <div class="page-2-content">
+                    <h1>Upcoming Events</h1>
+                    <img id="event-machine" src="../assets/Machine_Full.png" alt="Events" v-animate="{value: 'fadeIn'}">                    
+                </div>
             </div>
             <div class="page-3 page">
                 Past Events
@@ -47,25 +61,46 @@ export default {
     "app-footer": Footer
   },
   data() {
+    var that = this;
     return {
+      index: 0,
       opts: {
-        start: 0,
+        start: 1,
         dir: "v",
         duation: 500,
-        beforeChange: function(prev, next) {},
-        afterChange: function(prev, next) {}
+        beforeChange: function(ele, current, next) {
+          console.log("before", current, next);
+          that.index = next;
+        },
+        afterChange: function(ele, current, next) {
+          console.log("after", current);
+          that.index = current;
+        }
       }
     };
   },
   methods: {
     moveNext() {
       this.$refs.homePage.$fullpage.moveNext();
+    },
+    movePrev() {
+      this.$refs.homePage.$fullpage.movePrev();
+    },
+    moveTo: function(index) {
+      this.$refs.homePage.$fullpage.moveTo(index, true);
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
+
+#event-machine {
+    position: absolute;
+    top: 40vh;
+    left: 15vw;
+    height: 40%;
+}
 .app-footer {
   position: fixed;
 }
@@ -76,7 +111,7 @@ export default {
 }
 
 .img-holder {
-  height: 70vh;
+  height: 75vh;
   overflow: hidden;
   display: flex;
   object-fit: contain;
@@ -89,6 +124,57 @@ export default {
   width: 100%;
   height: 100%;
 }
+
+.nav-group {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  max-height: 22vh;
+  width: 35px;
+  border-radius: 20px;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 2vw;
+  background-color: rgba(#bfbfbf, 0.5);
+
+  .nav-prev,
+  .nav-next {
+    width: 20px;
+    height: 14.2857143px;
+    img {
+      max-width: 100%;
+      object-fit: contain;
+      opacity: 0.5;
+    }
+    &:active {
+      img {
+        opacity: 1;
+      }
+    }
+  }
+
+  li {
+    margin: auto;
+    width: 10px;
+    height: 10px;
+  }
+
+  .nav-dots {
+    border-radius: 50%;
+    border: #bfbfbf 1.5px solid;
+
+    &.active {
+      background: #da6f6f;
+      border: #da6f6f 1px solid;
+    }
+  }
+}
+
 .page {
   display: block;
   text-align: center;
@@ -99,6 +185,11 @@ export default {
 }
 .page-2 {
   padding-top: 170px;
+  padding-bottom: 20px;
+  .page-2-content {
+    background-color: #e1f2fe;
+    height: 100%;
+  }
 }
 .page-3 {
   display: flex;
@@ -109,27 +200,5 @@ export default {
 h3,
 p {
   font-size: 16px;
-}
-.button-group {
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  z-index: 9;
-}
-.button-group button {
-  display: inline-block;
-  margin: 10px;
-  color: #000;
-  background: #fff;
-  background: rgba(255, 255, 255, 0.5);
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  padding: 9px 18px;
-  border: none;
-  outline: none;
-}
-.button-group button.active {
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
 }
 </style>
