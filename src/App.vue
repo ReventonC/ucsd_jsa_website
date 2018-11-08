@@ -30,4 +30,5 @@ export default {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #707070;
 }
+
 </style>

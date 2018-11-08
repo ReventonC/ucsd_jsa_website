@@ -21,7 +21,7 @@ export default {
       setTimeout(()=> {
           this.mask_show = false;
       }
-      , 150);
+      , 1000);
   }
 }
 </script>

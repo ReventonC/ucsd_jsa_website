@@ -69,9 +69,9 @@ $header-l-r-pad: 8vw;
     margin-right: $header-l-r-pad;
     .tab {
       position: relative;
-      top: 50%;
-      margin: 1.5vw;
+      margin: 100px 1.5vw auto 1.5vw;
       font-size: 25px;
+      cursor: pointer;
     }
   }
 }
